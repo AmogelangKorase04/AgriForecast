@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer's Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Farmer's Dashboard</h1>
+    </header>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="overview.html" id="overview">Dashboard Overview</a>
+        <a href="weather.html" id="weather">Weather Conditions</a>
+        <a href="soil.html" id="soil">Soil Moisture</a>
+        <a href="pests.html" id="pests">Pest Alerts</a>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h2>Dashboard Overview</h2>
+            <div class="overview">
+                <div class="overview-item">
+                    <h3>Weather Forecast</h3>
+                    <canvas id="weatherChart"></canvas>
+                </div>
+                <div class="overview-item">
+                    <h3>Soil Moisture Levels</h3>
+                    <canvas id="soilChart"></canvas>
+                </div>
+                <div class="overview-item">
+                    <h3>Pest Alerts</h3>
+                    <canvas id="pestChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        const weatherData = {
+            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            datasets: [{
+                label: 'Temperature (°C)',
+                data: [22, 21, 25, 28, 24, 26, 27],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const soilData = {
+            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            datasets: [{
+                label: 'Moisture (%)',
+                data: [60, 55, 70, 65, 60, 58, 62],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const pestData = {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+            datasets: [{
+                label: 'Pest Count',
+                data: [10, 5, 12, 7],
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        window.onload = function() {
+            const weatherCtx = document.getElementById('weatherChart').getContext('2d');
+            const soilCtx = document.getElementById('soilChart').getContext('2d');
+            const pestCtx = document.getElementById('pestChart').getContext('2d');
+
+            new Chart(weatherCtx, {
+                type: 'line',
+                data: weatherData,
+            });
+
+            new Chart(soilCtx, {
+                type: 'bar',
+                data: soilData,
+            });
+
+            new Chart(pestCtx, {
+                type: 'line',
+                data: pestData,
+            });
+        };
+    </script>
+</body>
+</html>
