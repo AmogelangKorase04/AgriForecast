@@ -31,12 +31,8 @@ header {
     left: 0;
     background: linear-gradient(90deg, #388e3c, #66bb6a);
     padding-top: 20px;
-    padding-bottom: 80px; /* Ensure space for button */
     transition: width 0.3s;
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 }
 
 .sidebar a {
@@ -57,36 +53,50 @@ header {
     font-weight: bold;
 }
 
+/* Add Farm Button */
 .add-farm-btn {
     background-color: #ffeb3b;
     color: #333;
     border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    position: fixed; /* Fixed positioning for sidebar button */
-    bottom: 20px; /* Space from the bottom */
-    right: 20px; /* Space from the right */
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .add-farm-btn:hover {
     background-color: #fdd835;
+    transform: scale(1.1);
+}
+/* Stylish Current Season Display */
+#currentSeason {
+    font-size: 24px;
+    font-weight: bold;
+    color: #388e3c;
+    background-color: #dcedc8;
+    padding: 10px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    display: inline-block;
 }
 
 /* Layout styling */
 .layout {
     display: flex;
-    margin-left: 240px; /* Adjust for sidebar */
+    margin-left: 240px;
 }
 
 /* Container styling */
 .container {
     padding: 20px;
-    width: calc(100% - 240px); /* Adjust width to account for sidebar */
+    width: 100%;
     overflow: hidden;
 }
 
@@ -120,6 +130,11 @@ header {
     color: #388e3c;
 }
 
+/* Additional info section styling */
+.additional-info {
+    margin-top: 20px;
+}
+
 /* Seasonal plants card */
 .card {
     background-color: white;
@@ -149,19 +164,23 @@ header {
     justify-content: space-between;
 }
 
+#plantList li:last-child {
+    border-bottom: none;
+}
+
 /* Success rate progress bar */
 .success-bar-container {
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between progress bar and percentage */
 }
 
 .success-bar {
     background-color: #e0e0e0;
     border-radius: 10px;
-    height: 10px; /* Reduced height */
-    width: 70px; /* Reduced width */
+    height: 12px;
+    width: 80px;
     position: relative;
+    margin-right: 10px;
 }
 
 .success-bar .progress {
@@ -177,12 +196,82 @@ header {
 .success-rate {
     font-weight: bold;
     color: #388e3c;
-    font-size: 16px; /* Adjust font size */
+}
+/* Modal background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Darker background for better contrast */
 }
 
-/* Align items to the end */
-.card-content {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
+/* Modal content */
+.modal-content {
+    background: linear-gradient(135deg, #ffffff, #f1f1f1);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 350px; /* Adjust width for a medium size */
+    height: 200px; /* Adjust height */
+    border-radius: 30px; /* Rounded corners for a softer look */
+    position: absolute;
+    right: 10%; /* Position more to the right */
+    top: 20%; /* Adjust vertical position */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9); /* Slightly smaller */
+    transition: transform 0.3s ease-in-out;
 }
+
+/* Modal content hover effect */
+.modal-content:hover {
+    transform: scale(1); /* Enlarge on hover */
+}
+
+/* Close button */
+.close {
+    color: #666;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal buttons */
+.modal-content button {
+    display: block;
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 12px;
+    margin: 10px auto;
+    background: linear-gradient(135deg, #388e3c, #66bb6a);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.modal-content button:hover {
+    background: linear-gradient(135deg, #66bb6a, #388e3c);
+    transform: scale(1.05);
+}
+
+/* Modal buttons focus state */
+.modal-content button:focus {
+    outline: none;
+}
+

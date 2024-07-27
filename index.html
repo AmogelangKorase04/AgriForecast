@@ -10,6 +10,7 @@
 <body>
     <header>
         <h1>Metsi Mantsi Farm Dashboard</h1>
+        <div id="currentSeason">Current Season: </div>
     </header>
 
     <div class="layout">
@@ -51,6 +52,17 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <button onclick="redirectToAddExistingFarm()">Add Existing Farm</button>
+            <button onclick="redirectToBuyNewFarm()">Buy New Farm</button>
+        </div>
+    </div>
+
+
 
     <script type="module">
         // Sample data for weather, soil, and pests
@@ -109,6 +121,8 @@
             const currentMonth = new Date().getMonth(); // Get current month (0-indexed)
             const season = getSeason(currentMonth);
 
+            document.getElementById('currentSeason').innerText = `Current Season: ${season}`;
+
             plantList.innerHTML = '';
             seasonalPlants
                 .filter(plant => plant.suitableSeason === season)
@@ -126,6 +140,25 @@
                     plantList.appendChild(li);
                 });
         }
+
+        function showModal() {
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function hideModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function redirectToAddExistingFarm() {
+            window.location.href = 'add-existing-farm.html';
+        }
+
+        function redirectToBuyNewFarm() {
+            window.location.href = 'buy-new-farm.html';
+        }
+
+        document.getElementById('addFarmBtn').addEventListener('click', showModal);
+        document.getElementById('closeModal').addEventListener('click', hideModal);
 
         window.onload = function() {
             const weatherCtx = document.getElementById('weatherChart').getContext('2d');
