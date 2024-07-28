@@ -1,54 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgriSign</title>
-    <link rel="stylesheet" href="log.css" />
-    <link rel="stylesheet" href="log2.css" />
-  </head>
-  <body>
-    <div class="parent">
-      <div class="overlay">
+    <link rel="stylesheet" href="log.css">
+    <link rel="stylesheet" href="log2.css">
+</head>
+<body>
+<div class="parent">
+    <div class="overlay">
         <p class="para">Welcome Back!!!</p>
         <p class="para2">
-          Have you entered your details yet? If not, please click sign in and be
-          ready to be amazed.
+            Have you entered your details yet? If not, please click sign in and be
+            ready to be amazed.
         </p>
         <button class="btn" onclick="change()">Sign In</button>
-      </div>
-      <div class="content">
-        <section>
-          <form action="">
-            <p class="heading">Sign In</p>
-            <p>Welcome back, friends! Let's Sign In.</p>
-            <input type="text" class="name" placeholder="Name" />
-            <input type="password" class="pass" placeholder="Password" />
-            <button type="button" onclick="RedirectToHomePage()" class="btn1">
-              Sign In
-            </button>
-          </form>
-        </section>
-        <section>
-          <form action="">
-            <p class="heading">Sign Up</p>
-            <p>Welcome to the family!</p>
-            <input type="text" class="name" placeholder="Name" />
-            <input type="email" class="email" placeholder="Email" />
-            <input type="password" class="pass" placeholder="Password" />
-            <button type="button" onclick="RedirectToHomePage()" class="btn1">
-              Sign Up
-            </button>
-          </form>
-        </section>
-      </div>
     </div>
+    <div class="content">
+        <section>
+            <form action="login.php" method="POST">
+                <p class="heading">Sign In</p>
+                <p>Welcome back, friends! Let's Sign In.</p>
+                <input type="text" name="username" class="name" placeholder="Name" required>
+                <input type="password" name="password" class="pass" placeholder="Password" required>
+                <button type="submit" class="btn1">Sign In</button>
+            </form>
+        </section>
+        <section>
+            <form action="signup.php" method="POST">
+                <p class="heading">Sign Up</p>
+                <p>Welcome to the family!</p>
+                <input type="text" name="username" class="name" placeholder="Name" required>
+                <input type="email" name="email" class="email" placeholder="Email" required>
+                <input type="password" name="password" class="pass" placeholder="Password" required>
+                <button type="submit" class="btn1">Sign Up</button>
+            </form>
+        </section>
+    </div>
+</div>
 
-    <script src="fun.js"></script>
-    <script>
-      function RedirectToHomePage() {
-        window.location.href = "index.html";
-      }
-    </script>
-  </body>
+<script src="fun.js"></script>
+</body>
 </html>

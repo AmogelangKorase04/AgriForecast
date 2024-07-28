@@ -27,7 +27,7 @@
         <div class="content">
           <h2>Dashboard Overview</h2>
           <div class="overview">
-            <div class="overview-item">
+            <div class="overview-item" id="weatherOverview">
               <h3>Weather Forecast</h3>
               <canvas id="weatherChart"></canvas>
             </div>
@@ -53,16 +53,18 @@
       </div>
     </div>
 
-    <!-- Modal -->
-    <div id="modal" class="modal">
+    <!-- Modal for detailed weather data -->
+    <div id="weatherModal" class="modal">
       <div class="modal-content">
-        <span id="closeModal" class="close">&times;</span>
-        <button onclick="redirectToAddExistingFarm()">Add Existing Farm</button>
-        <button onclick="redirectToBuyNewFarm()">Buy New Farm</button>
+        <span id="closeWeatherModal" class="close">&times;</span>
+        <h2>Detailed Weather Data</h2>
+        <div id="detailedWeatherData">
+          <!-- Detailed weather data will be added here dynamically -->
+        </div>
       </div>
     </div>
 
-    <script type="module">
+    <script>
       // Sample data for weather, soil, and pests
       const weatherData = {
         labels: [
@@ -171,12 +173,43 @@
         document.getElementById("modal").style.display = "none";
       }
 
+      function showWeatherModal() {
+        document.getElementById("weatherModal").style.display = "block";
+        displayDetailedWeatherData();
+      }
+
+      function hideWeatherModal() {
+        document.getElementById("weatherModal").style.display = "none";
+      }
+
+      function displayDetailedWeatherData() {
+        const detailedWeatherData = `
+          <ul>
+            <li>Monday: 22°C, Sunny</li>
+            <li>Tuesday: 21°C, Partly Cloudy</li>
+            <li>Wednesday: 25°C, Rain</li>
+            <li>Thursday: 28°C, Sunny</li>
+            <li>Friday: 24°C, Partly Cloudy</li>
+            <li>Saturday: 26°C, Rain</li>
+            <li>Sunday: 27°C, Sunny</li>
+          </ul>
+        `;
+        document.getElementById("detailedWeatherData").innerHTML = detailedWeatherData;
+      }
+
       document
         .getElementById("addFarmBtn")
         .addEventListener("click", showModal);
       document
         .getElementById("closeModal")
         .addEventListener("click", hideModal);
+
+      document
+        .getElementById("weatherOverview")
+        .addEventListener("click", showWeatherModal);
+      document
+        .getElementById("closeWeatherModal")
+        .addEventListener("click", hideWeatherModal);
 
       window.onload = function () {
         const weatherCtx = document
