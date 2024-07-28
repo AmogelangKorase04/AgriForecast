@@ -1,281 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farmer's Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="home.css" />
-
-    <!-- Start of Async Drift Code -->
-<script>
-  "use strict";
-  
-  !function() {
-    var t = window.driftt = window.drift = window.driftt || [];
-    if (!t.init) {
-      if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-      t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-      t.factory = function(e) {
-        return function() {
-          var n = Array.prototype.slice.call(arguments);
-          return n.unshift(e), t.push(n), t;
-        };
-      }, t.methods.forEach(function(e) {
-        t[e] = t.factory(e);
-      }), t.load = function(t) {
-        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-        var i = document.getElementsByTagName("script")[0];
-        i.parentNode.insertBefore(o, i);
-      };
-    }
-  }();
-  drift.SNIPPET_VERSION = '0.3.1';
-  drift.load('grmxxkb54tbb');
-  </script>
-  <!-- End of Async Drift Code -->
-  </head>
-  <body>
+    <link rel="stylesheet" href="home.css">
+    <script src="home.js"></script>
+</head>
+<body>
     <header>
-      <h1 id="farmName"></h1>
-      <div id="currentSeason">Current Season:</div>
+        <h1 id="farmName"></h1>
+        <div id="currentSeason">Current Season: </div>
     </header>
-    <div class="layout">
-      <div id="mySidebar" class="sidebar">
-        <a href="home.html" id="overview">Dashboard Overview</a>
-        <a href="weather.html" id="weather">Weather Conditions</a>
-        <a href="soil.html" id="soil">Soil Moisture</a>
-        <a href="pests.html" id="pests">Pest Alerts</a>
-        <a href="plants.html" id="plants">Seasonal Plants</a>
-        <a href="farms.html" id="farms">Farm Management</a>
-      </div>
 
-      <div class="container">
-        <div class="content">
-          <h2>Dashboard Overview</h2>
-          <div class="overview">
-            <div id ="weatherForecast"class="overview-item">
-              <h3>Weather Forecast</h3>
-              <canvas id="weatherChart"></canvas>
-            </div>
-            <div class="overview-item">
-              <h3>Soil Moisture Levels</h3>
-              <canvas id="soilChart"></canvas>
-            </div>
-            <div class="overview-item">
-              <h3>Pest Alerts</h3>
-              <canvas id="pestChart"></canvas>
-            </div>
-          </div>
-          <button id="addFarmBtn" class="add-farm-btn">+</button>
-          <div class="additional-info">
-            <div class="card" id="seasonalPlants">
-              <h3>Seasonal Plants</h3>
-              <ul id="plantList">
-                <!-- Plant recommendations with success rates will be added here dynamically -->
-              </ul>
-            </div>
-          </div>
-          <div class="plantList">
-            <div class="card" id="seasonalPlants">
-                <p><strong>Current Farm Main Product:</strong> <span id="product"></span></p>
-                <p><strong>Best Time To Plant:</strong> <span id="plantingTime"></span></p>
-                <p><strong>Estimated Harvesting Time:</strong> <span id="harvestingTime"></span></p>
-                <p><strong>Average Temperature:</strong> <span id="temperature"></span></p>
-                <p><strong>Average Rainfall:</strong> <span id="rainfall"></span></p>
-                <p><strong>Soil Type:</strong> <span id="soilType"></span></p>
+    <div class="layout">
+        <div id="mySidebar" class="sidebar">
+            <a href="overview.html" id="overview">Dashboard Overview</a>
+            <a href="weather.html" id="weather">Weather Conditions</a>
+            <a href="soil.html" id="soil">Soil Moisture</a>
+            <a href="pests.html" id="pests">Pest Alerts</a>
+            <a href="plants.html" id="plants">Seasonal Plants</a>
+            <a href="farms.html" id="farms">Farm Management</a>
+        </div>
+
+        <div class="container">
+            <div class="content">
+                <h2>Dashboard Overview</h2>
+                <div class="overview">
+                    <div id="weatherForecast" class="overview-item">
+                        <h3>Weather Forecast</h3>
+                        <canvas id="weatherChart"></canvas>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Soil Moisture Levels</h3>
+                        <canvas id="soilChart"></canvas>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Pest Alerts</h3>
+                        <canvas id="pestChart"></canvas>
+                    </div>
+                </div>
+                <button id="addFarmBtn" class="add-farm-btn">+</button>
+                <div class="additional-info">
+                    <div class="card" id="seasonalPlants">
+                        <h3>Seasonal Plants</h3>
+                        <ul id="plantList">
+                            <!-- Plant recommendations with success rates will be added here dynamically -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="plantList">
+                    <div class="card" id="seasonalPlants">
+                        <p><strong>Current Farm Main Product:</strong> <span id="product"></span></p>
+                        <p><strong>Best Time To Plant:</strong> <span id="plantingTime"></span></p>
+                        <p><strong>Estimated Harvesting Time:</strong> <span id="harvestingTime"></span></p>
+                        <p><strong>Average Temperature:</strong> <span id="temperature"></span></p>
+                        <p><strong>Average Rainfall:</strong> <span id="rainfall"></span></p>
+                        <p><strong>Soil Type:</strong> <span id="soilType"></span></p>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
     </div>
 
     <!-- Modal -->
     <div id="modal" class="modal">
-      <div class="modal-content">
-        <span id="closeModal" class="close">&times;</span>
-        <button onclick="redirectToAddExistingFarm()">Add Existing Farm</button>
-        <button onclick="redirectToBuyNewFarm()">Buy New Farm</button>
-      </div>
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <button onclick="redirectToAddExistingFarm()">Add Existing Farm</button>
+            <button onclick="redirectToBuyNewFarm()">Buy New Farm</button>
+        </div>
     </div>
-        <!-- The Modal -->
-        <div id="weatherModal" class="modal">
-          <div class="modal-content">
-              <span class="close" id="closeWeatherModal">&times;</span>
-              <h2>Weather Forecast Details</h2>
-              <p>Detailed weather information will be displayed here...</p>
-              <button id="moreWeatherInfo">More Info</button>
-          </div>
-      </div>
-  
-
-    <script type="module">
-      // Sample data for weather, soil, and pests
-      const weatherData = {
-        labels: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
-        datasets: [
-          {
-            label: "Temperature (°C)",
-            data: [22, 21, 25, 28, 24, 26, 27],
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgba(54, 162, 235, 1)",
-            borderWidth: 1,
-          },
-        ],
-      };
-
-      const soilData = {
-        labels: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
-        datasets: [
-          {
-            label: "Moisture (%)",
-            data: [60, 55, 70, 65, 60, 58, 62],
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            borderColor: "rgba(75, 192, 192, 1)",
-            borderWidth: 1,
-          },
-        ],
-      };
-
-      const pestData = {
-        labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
-        datasets: [
-          {
-            label: "Pest Count",
-            data: [10, 5, 12, 7],
-            backgroundColor: "rgba(255, 159, 64, 0.2)",
-            borderColor: "rgba(255, 159, 64, 1)",
-            borderWidth: 1,
-          },
-        ],
-      };
-
-      const seasonalPlants = [
-        { plant: "Tomatoes", suitableSeason: "Spring", successRate: 85 },
-        { plant: "Lettuce", suitableSeason: "Spring", successRate: 90 },
-        { plant: "Carrots", suitableSeason: "Autumn", successRate: 80 },
-        { plant: "Peas", suitableSeason: "Spring", successRate: 75 },
-        { plant: "Pumpkins", suitableSeason: "Autumn", successRate: 70 },
-        { plant: "Cucumbers", suitableSeason: "Summer", successRate: 80 },
-        { plant: "Corn", suitableSeason: "Summer", successRate: 85 },
-      ];
-
-      function getSeason(month) {
-        if (month >= 2 && month <= 4) return "Spring"; // March, April, May
-        if (month >= 5 && month <= 7) return "Summer"; // June, July, August
-        if (month >= 8 && month <= 10) return "Autumn"; // September, October, November
-        return "Winter"; // December, January, February
-      }
-
-      function updateSeasonalPlants() {
-        const plantList = document.getElementById("plantList");
-        const currentMonth = new Date().getMonth(); // Get current month (0-indexed)
-        const season = getSeason(currentMonth);
-
-        document.getElementById(
-          "currentSeason"
-        ).innerText = `Current Season: ${season}`;
-
-        plantList.innerHTML = "";
-        seasonalPlants
-          .filter((plant) => plant.suitableSeason === season)
-          .forEach((plant) => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-                        <span class="plant-name">${plant.plant}</span>
-                        <div class="success-bar-container">
-                            <div class="success-bar">
-                                <div class="progress" style="width: ${plant.successRate}%"></div>
-                            </div>
-                            <span class="success-rate">${plant.successRate}%</span>
-                        </div>
-                    `;
-            plantList.appendChild(li);
-          });
-      }
-
-      function showModal() {
-        document.getElementById("modal").style.display = "block";
-      }
-
-      function hideModal() {
-        document.getElementById("modal").style.display = "none";
-      }
-
-      document
-        .getElementById("addFarmBtn")
-        .addEventListener("click", showModal);
-      document
-        .getElementById("closeModal")
-        .addEventListener("click", hideModal);
-
-      window.onload = function () {
-        const weatherCtx = document
-          .getElementById("weatherChart")
-          .getContext("2d");
-        const soilCtx = document.getElementById("soilChart").getContext("2d");
-        const pestCtx = document.getElementById("pestChart").getContext("2d");
-
-        new Chart(weatherCtx, {
-          type: "line",
-          data: weatherData,
-        });
-
-        new Chart(soilCtx, {
-          type: "bar",
-          data: soilData,
-        });
-
-        new Chart(pestCtx, {
-          type: "line",
-          data: pestData,
-        });
-
-        updateSeasonalPlants();
-      };
-    </script>
+    <div id="weatherModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeWeatherModal">&times;</span>
+            <h2>Weather Forecast Details</h2>
+            <p>Detailed weather information will be displayed here...</p>
+            <button id="moreWeatherInfo">More Info</button>
+        </div>
+    </div>
 
     <script>
-      // Retrieve the farm data from localStorage
-      const farm = JSON.parse(localStorage.getItem('selectedFarm'));
+        function redirectToAddExistingFarm() {
+            window.location.href = 'existingFarm.html';
+        }
 
-      if (farm) {
-          document.getElementById('farmName').textContent = farm.name;
-          document.getElementById('product').textContent = farm.product;
-          document.getElementById('plantingTime').textContent = farm.plantingTime;
-          document.getElementById('harvestingTime').textContent = farm.harvestingTime;
-          document.getElementById('temperature').textContent = farm.temperature;
-          document.getElementById('rainfall').textContent = farm.rainfall;
-          document.getElementById('soilType').textContent = farm.soil;
-          document.getElementById('rating').setAttribute('data-score', farm.rating);
-      } else {
-          // Handle case where there is no farm data
-          window.location.href = "nextSignUp.html";
-      }
-      function redirectToAddExistingFarm() {
+        function redirectToBuyNewFarm() {
+            window.location.href = 'buyNewFarm.html';
+        }
+
+        function showModal() {
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function hideModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        document.getElementById('addFarmBtn').addEventListener('click', showModal);
+        document.getElementById('closeModal').addEventListener('click', hideModal);
+
+        // Retrieve the farm data from localStorage
+        const farm = JSON.parse(localStorage.getItem('selectedFarm'));
+
+        if (farm) {
+            document.getElementById('farmName').textContent = farm.name;
+            document.getElementById('product').textContent = farm.product;
+            document.getElementById('plantingTime').textContent = farm.plantingTime;
+            document.getElementById('harvestingTime').textContent = farm.harvestingTime;
+            document.getElementById('temperature').textContent = farm.temperature;
+            document.getElementById('rainfall').textContent = farm.rainfall;
+            document.getElementById('soilType').textContent = farm.soil;
+            //document.getElementById('rating').setAttribute('data-score', farm.rating);
+        } else {
+            // Handle case where there is no farm data
+            document.body.innerHTML = '<h1>No Farm Data Found</h1>';
+        }
+        function redirectToAddExistingFarm() {
         window.location.href = "existingFarm.html";
-      }
+        }
 
-      function redirectToBuyNewFarm() {
+        function redirectToBuyNewFarm() {
         window.location.href = "buyNewFarm.html";
-      }
-      
+        }
+
         // Weather Modal Logic
         function showWeatherModal() {
             document.getElementById('weatherModal').style.display = 'block';
@@ -292,6 +141,7 @@
         document.getElementById('moreWeatherInfo').onclick = function() {
             window.location.href = 'weather.html';
         }
+
     </script>
-  </body>
+</body>
 </html>

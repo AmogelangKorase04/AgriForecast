@@ -28,10 +28,9 @@ function change() {
       "Have you entered your details yet? if not please click sign in and be ready to be amazed";
   }
 }
-function login(){
-    window.location.href = "home.html";
-}
 
-function signup(){
-  window.location.href = "nextSignUp.html";
-}
+
+
+
+
+

@@ -1,120 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Details</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
     <script src="weather.js" defer></script>
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <h1>Detailed Weather Information</h1>
+        <h1>Detailed Weather Information</h1>
     </header>
 
     <div class="layout">
-      <div class="sidebar">
-        <a href="home.html">Dashboard Overview</a>
-        <a href="weather.html" class="active">Weather Conditions</a>
-        <a href="soil.html">Soil Moisture</a>
-        <a href="pests.html">Pest Alerts</a>
-        <a href="plants.html">Seasonal Plants</a>
-        <a href="farms.html">Farm Management</a>
-      </div>
-
-      <div class="container">
-        <div class="content">
-          <h2>Today's Weather</h2>
-          <div class="overview">
-            <div class="overview-item">
-              <h3>Temperature</h3>
-              <p id="temperature">25°C</p>
-            </div>
-            <div class="overview-item">
-              <h3>Humidity</h3>
-              <p id="humidity">60%</p>
-            </div>
-            <div class="overview-item">
-              <h3>Wind Speed</h3>
-              <p id="windSpeed">15 km/h</p>
-            </div>
-          </div>
-
-          <h2>Weekly Forecast</h2>
-          <div class="overview">
-            <div class="overview-item">
-              <h3>Monday</h3>
-              <p id="monday">Sunny, 28°C</p>
-            </div>
-            <div class="overview-item">
-              <h3>Tuesday</h3>
-              <p id="tuesday">Cloudy, 24°C</p>
-            </div>
-            <div class="overview-item">
-              <h3>Wednesday</h3>
-              <p id="wednesday">Rainy, 20°C</p>
-            </div>
-            <div class="overview-item">
-              <h3>Thursday</h3>
-              <p id="thursday">Sunny, 30°C</p>
-            </div>
-            <div class="overview-item">
-              <h3>Friday</h3>
-              <p id="friday">Cloudy, 25°C</p>
-            </div>
-          </div>
-
-          <h2>Real-Time Weather Fluctuations</h2>
-          <canvas id="weatherChart" width="400" height="200"></canvas>
+        <div class="sidebar">
+            <a href="home.html">Dashboard Overview</a>
+            <a href="weather.html" class="active">Weather Conditions</a>
+            <a href="soil.html">Soil Moisture</a>
+            <a href="pests.html">Pest Alerts</a>
+            <a href="plants.html">Seasonal Plants</a>
+            <a href="farms.html">Farm Management</a>
         </div>
-      </div>
+
+        <div class="container">
+            <div class="content">
+                <h2>Today's Weather</h2>
+                <div class="overview">
+                    <div class="overview-item">
+                        <h3>Temperature</h3>
+                        <p id="temperature">25°C</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Humidity</h3>
+                        <p id="humidity">60%</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Wind Speed</h3>
+                        <p id="windSpeed">15 km/h</p>
+                    </div>
+                </div>
+
+                <h2>Weekly Forecast</h2>
+                <div class="overview">
+                    <div class="overview-item">
+                        <h3>Monday</h3>
+                        <p id="monday">Sunny, 28°C</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Tuesday</h3>
+                        <p id="tuesday">Cloudy, 24°C</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Wednesday</h3>
+                        <p id="wednesday">Rainy, 20°C</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Thursday</h3>
+                        <p id="thursday">Sunny, 30°C</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Friday</h3>
+                        <p id="friday">Cloudy, 25°C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <script>
-      const ctx = document.getElementById("weatherChart").getContext("2d");
-      const weatherChart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: [], // Time labels will be added here
-          datasets: [
-            {
-              label: "Temperature (°C)",
-              data: [], // Temperature data will be added here
-              borderColor: "rgba(255, 99, 132, 1)",
-              borderWidth: 1,
-              fill: false,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            x: {
-              type: "realtime",
-              realtime: {
-                delay: 2000,
-                onRefresh: function (chart) {
-                  const now = Date.now();
-                  chart.data.labels.push(now);
-                  chart.data.datasets.forEach(function (dataset) {
-                    dataset.data.push({
-                      x: now,
-                      y: getRandomTemperature(), // Replace this with actual data fetching function
-                    });
-                  });
-                },
-              },
-            },
-            y: {
-              beginAtZero: true,
-            },
-          },
-        },
-      });
-
-      function getRandomTemperature() {
-        return Math.floor(Math.random() * (30 - 15 + 1)) + 15;
-      }
-    </script>
-  </body>
+</body>
 </html>

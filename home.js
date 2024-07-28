@@ -1,66 +1,23 @@
 // Sample data for weather, soil, and pests
-const weatherData = {
-    labels: ["July", "August", "September", "October", "November"],
-    datasets: [{
-        label: 'Temperature (°C)',
-        data: [22, 21, 25, 28, 24],
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1
-    }]
-};
-
-const soilData = {
-    labels: ["July", "August", "September", "October", "November"],
-    datasets: [{
-        label: 'Moisture (%)',
-        data: [60, 55, 70, 65, 60],
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1
-    }]
-};
-
-const pestData = {
-    labels: ["July", "August", "September", "October", "November"],
-    datasets: [{
-        label: 'Pest Count',
-        data: [10, 5, 12, 7, 8],
-        backgroundColor: 'rgba(255, 159, 64, 0.2)',
-        borderColor: 'rgba(255, 159, 64, 1)',
-        borderWidth: 1
-    }]
-};
-
-
-
-const seasonalPlants = [
-    { plant: 'Tomatoes', suitableSeason: 'Spring', successRate: 85 },
-    { plant: 'Lettuce', suitableSeason: 'Spring', successRate: 90 },
-    { plant: 'Carrots', suitableSeason: 'Autumn', successRate: 80 },
-    { plant: 'Peas', suitableSeason: 'Spring', successRate: 75 },
-    { plant: 'Pumpkins', suitableSeason: 'Autumn', successRate: 70 },
-    { plant: 'Cucumbers', suitableSeason: 'Summer', successRate: 80 },
-    { plant: 'Corn', suitableSeason: 'Summer', successRate: 85 }
-];
 
 function getSeason(month) {
-    if (month >= 3 && month <= 5) return 'Autumn';    // March, April, May
-    if (month >= 6 && month <= 8) return 'Winter';    // June, July, August
-    if (month >= 9 && month <= 11) return 'Spring';      // September, October, November
+    if (month >= 2 && month <= 4) return 'Autumn';    // March, April, May
+    if (month >= 5 && month <= 7) return 'Winter';    // June, July, August
+    if (month >= 8 && month <= 10) return 'Spring';      // September, October, November
     return 'Summer';                                  // December, January, February
 }
 
-function updateSeasonalPlants() {
+function updateSeasonalPlants(result) {
     const plantList = document.getElementById('plantList');
-    const currentMonth = new Date().getMonth(); // Get current month (0-indexed)
-    const season = getSeason(currentMonth);
+    let seasonalPlants = result;
+    let currentMonth = new Date().getMonth();
+    let season = getSeason(currentMonth);
+    console.log(result)
 
     document.getElementById('currentSeason').innerText = `Current Season: ${season}`;
 
     plantList.innerHTML = '';
     seasonalPlants
-        .filter(plant => plant.suitableSeason === season)
         .forEach(plant => {
             const li = document.createElement('li');
             li.innerHTML = `
@@ -76,7 +33,67 @@ function updateSeasonalPlants() {
         });
 }
 
-window.onload = function() {
+function seasonal() {
+    let currentMonth = new Date().getMonth();
+    let season = getSeason(currentMonth);
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({"season":season});
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("https://79il189m60.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
+    .then(response => response.text())
+    .then(result => updateSeasonalPlants(JSON.parse(result).body))
+    .catch(error => console.log('error', error));
+}
+
+
+
+
+
+function ctxs(result) {
+    console.log("ftsv", result);
+
+    let weatherData = {
+        labels: result["months"],
+        datasets: [{
+            label: 'Temperature (°C)',
+            data: result["weather"],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    };
+    
+    let soilData = {
+        labels: result["months"],
+        datasets: [{
+            label: 'Moisture (%)',
+            data: result["soil"],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
+    
+    let pestData = {
+        labels: result["months"],
+        datasets: [{
+            label: 'Pest/meter^2',
+            data: result["pest"],
+            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 1
+        }]
+    };
+
     const weatherCtx = document.getElementById('weatherChart').getContext('2d');
     const soilCtx = document.getElementById('soilChart').getContext('2d');
     const pestCtx = document.getElementById('pestChart').getContext('2d');
@@ -96,8 +113,31 @@ window.onload = function() {
         data: pestData,
     });
 
-    updateSeasonalPlants();
+    seasonal();
 };
+
+
+window.onload = function() {
+    let currentMonth = new Date().getMonth();
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({"month":currentMonth});
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("https://n8n7fdpun7.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
+    .then(response => response.text())
+    .then(result => ctxs(JSON.parse(result).body))
+    .catch(error => console.log('error', error));
+}
+
+
 
 
 
