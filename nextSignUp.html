@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Finder</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        header {
+            width: 100%;
+            background-color: #2e7d32;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 0.5rem;
+        }
+        p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .button {
+            background-color: #81c784;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #66bb6a;
+        }
+        .button-icon {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Farm Finder</h2>
+    </header>
+    <div class="container">
+        <h1>Welcome to Farm Finder</h1>
+        <p>Are you buying a new farm or browsing for an existing one?</p>
+        <div class="button-container">
+            <a href="#buy-farm" class="button">
+                <span class="button-icon">🌱</span> Buying a New Farm
+            </a>
+            <a href="#browse-farm" class="button">
+                <span class="button-icon">🔍</span> Browsing for an Existing Farm
+            </a>
+        </div>
+    </div>
+</body>
+</html>
