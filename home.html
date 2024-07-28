@@ -237,7 +237,7 @@
           document.getElementById('rating').setAttribute('data-score', farm.rating);
       } else {
           // Handle case where there is no farm data
-          document.body.innerHTML = '<h1>No Farm Data Found</h1>';
+          window.location.href = "nextSignUp.html";
       }
       function redirectToAddExistingFarm() {
         window.location.href = "existingFarm.html";
