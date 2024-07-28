@@ -26,7 +26,7 @@
         <div class="content">
           <h2>Dashboard Overview</h2>
           <div class="overview">
-            <div class="overview-item">
+            <div id ="weatherForecast"class="overview-item">
               <h3>Weather Forecast</h3>
               <canvas id="weatherChart"></canvas>
             </div>
@@ -69,6 +69,16 @@
         <button onclick="redirectToBuyNewFarm()">Buy New Farm</button>
       </div>
     </div>
+        <!-- The Modal -->
+        <div id="weatherModal" class="modal">
+          <div class="modal-content">
+              <span class="close" id="closeWeatherModal">&times;</span>
+              <h2>Weather Forecast Details</h2>
+              <p>Detailed weather information will be displayed here...</p>
+              <button id="moreWeatherInfo">More Info</button>
+          </div>
+      </div>
+  
 
     <script type="module">
       // Sample data for weather, soil, and pests
@@ -236,6 +246,23 @@
       function redirectToBuyNewFarm() {
         window.location.href = "buyNewFarm.html";
       }
+      
+        // Weather Modal Logic
+        function showWeatherModal() {
+            document.getElementById('weatherModal').style.display = 'block';
+        }
+
+        function hideWeatherModal() {
+            document.getElementById('weatherModal').style.display = 'none';
+        }
+
+        document.getElementById('weatherForecast').addEventListener('click', showWeatherModal);
+        document.getElementById('closeWeatherModal').addEventListener('click', hideWeatherModal);
+
+        // Redirect to weather.html on button click
+        document.getElementById('moreWeatherInfo').onclick = function() {
+            window.location.href = 'weather.html';
+        }
     </script>
   </body>
 </html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Details</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="weather.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Detailed Weather Information</h1>
+    </header>
+
+    <div class="layout">
+        <div class="sidebar">
+            <a href="home.html">Dashboard Overview</a>
+            <a href="weather.html" class="active">Weather Conditions</a>
+            <a href="soil.html">Soil Moisture</a>
+            <a href="pests.html">Pest Alerts</a>
+            <a href="plants.html">Seasonal Plants</a>
+            <a href="farms.html">Farm Management</a>
+        </div>
+
+        <div class="container">
+            <div class="content">
+                <h2>Today's Weather</h2>
+                <div class="overview">
+                    <div class="overview-item">
+                        <h3>Temperature</h3>
+                        <p id="temperature">25°C</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Humidity</h3>
+                        <p id="humidity">60%</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Wind Speed</h3>
+                        <p id="windSpeed">15 km/h</p>
+                    </div>
+                </div>
+
+                <h2>Weekly Forecast</h2>
+                <div class="overview">
+                    <div class="overview-item">
+                        <h3>Monday</h3>
+                        <p id="monday">Sunny, 28°C</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Tuesday</h3>
+                        <p id="tuesday">Cloudy, 24°C</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Wednesday</h3>
+                        <p id="wednesday">Rainy, 20°C</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Thursday</h3>
+                        <p id="thursday">Sunny, 30°C</p>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Friday</h3>
+                        <p id="friday">Cloudy, 25°C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
