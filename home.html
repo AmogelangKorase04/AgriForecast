@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer's Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="home.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Metsi Mantsi Farm Dashboard</h1>
+        <div id="currentSeason">Current Season: </div>
+    </header>
+
+    <div class="layout">
+        <div id="mySidebar" class="sidebar">
+            <a href="overview.html" id="overview">Dashboard Overview</a>
+            <a href="weather.html" id="weather">Weather Conditions</a>
+            <a href="soil.html" id="soil">Soil Moisture</a>
+            <a href="pests.html" id="pests">Pest Alerts</a>
+            <a href="plants.html" id="plants">Seasonal Plants</a>
+            <a href="farms.html" id="farms">Farm Management</a>
+        </div>
+
+        <div class="container">
+            <div class="content">
+                <h2>Dashboard Overview</h2>
+                <div class="overview">
+                    <div class="overview-item">
+                        <h3>Weather Forecast</h3>
+                        <canvas id="weatherChart"></canvas>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Soil Moisture Levels</h3>
+                        <canvas id="soilChart"></canvas>
+                    </div>
+                    <div class="overview-item">
+                        <h3>Pest Alerts</h3>
+                        <canvas id="pestChart"></canvas>
+                    </div>
+                </div>
+                <button id="addFarmBtn" class="add-farm-btn">+</button>
+                <div class="additional-info">
+                    <div class="card" id="seasonalPlants">
+                        <h3>Seasonal Plants</h3>
+                        <ul id="plantList">
+                            <!-- Plant recommendations with success rates will be added here dynamically -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <button onclick="redirectToAddExistingFarm()">Add Existing Farm</button>
+            <button onclick="redirectToBuyNewFarm()">Buy New Farm</button>
+        </div>
+    </div>
+
+
+    <script>
+        function redirectToAddExistingFarm() {
+            window.location.href = 'existingFarm.html';
+        }
+
+        function redirectToBuyNewFarm() {
+            window.location.href = 'buyNewFarm.html';
+        }
+
+        function showModal() {
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function hideModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        document.getElementById('addFarmBtn').addEventListener('click', showModal);
+        document.getElementById('closeModal').addEventListener('click', hideModal);
+
+    </script>
+</body>
+</html>

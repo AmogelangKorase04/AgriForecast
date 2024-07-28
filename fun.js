@@ -28,3 +28,9 @@ function change() {
       "Have you entered your details yet? if not please click sign in and be ready to be amazed";
   }
 }
+
+
+
+
+
+
