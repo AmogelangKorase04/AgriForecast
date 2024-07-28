@@ -205,7 +205,7 @@ header {
                 <p><strong>Rating:</strong> <span id="modalRating" class="rating"></span></p>
             </div>
             <div class="modal-footer">
-                <button id="visitSiteBtn">Visit Site</button>
+                <button id="visitSiteBtn" onclick="location.href='home.html'">Choose Farm</button>
             </div>
         </div>
     </div>
@@ -286,6 +286,8 @@ header {
     document.getElementById('modalRainfall').textContent = farm.rainfall;
     document.getElementById('modalSoilType').textContent = farm.soil;
     document.getElementById('modalRating').setAttribute('data-score', farm.rating);
+
+    localStorage.setItem('selectedFarm', JSON.stringify(farm));
 
     document.getElementById('farmModal').style.display = 'block';
     setTimeout(() => {
