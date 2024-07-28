@@ -38,6 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Update values every 10 seconds
-    setInterval(updateValues, 2000);
+    // Update values every 1 seconds
+    setInterval(updateValues, 1000);
 });
