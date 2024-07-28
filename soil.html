@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soil Moisture Details</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="soil.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Detailed Soil Moisture Information</h1>
+    </header>
+
+    <div class="layout">
+      <div class="sidebar">
+        <a href="home.html">Dashboard Overview</a>
+        <a href="weather.html">Weather Conditions</a>
+        <a href="soil.html" class="active">Soil Moisture</a>
+        <a href="pests.html">Pest Alerts</a>
+        <a href="plants.html">Seasonal Plants</a>
+        <a href="farms.html">Farm Management</a>
+      </div>
+
+      <div class="container">
+        <div class="content">
+          <h2>Today's Soil Moisture</h2>
+          <div class="overview">
+            <div class="overview-item">
+              <h3>Soil Moisture</h3>
+              <p id="soilMoisture">35%</p>
+            </div>
+          </div>
+
+          <h2>Weekly Soil Moisture</h2>
+          <div class="overview">
+            <div class="overview-item">
+              <h3>Monday</h3>
+              <p id="monday">30%</p>
+            </div>
+            <div class="overview-item">
+              <h3>Tuesday</h3>
+              <p id="tuesday">32%</p>
+            </div>
+            <div class="overview-item">
+              <h3>Wednesday</h3>
+              <p id="wednesday">28%</p>
+            </div>
+            <div class="overview-item">
+              <h3>Thursday</h3>
+              <p id="thursday">33%</p>
+            </div>
+            <div class="overview-item">
+              <h3>Friday</h3>
+              <p id="friday">29%</p>
+            </div>
+          </div>
+
+          <h2>Real-Time Soil Moisture Fluctuations</h2>
+          <canvas id="soilChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
