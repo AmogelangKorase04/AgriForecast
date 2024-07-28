@@ -1,0 +1,91 @@
+.heading {
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  color: #388e3c; /* Dark green for headings */
+}
+p {
+  margin-top: 20px;
+  text-align: center;
+  color: #6d4c41; /* Brown tone for text */
+}
+
+.name,
+.email,
+.pass {
+  background-color: #e8f5e9; /* Very light green for inputs */
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  width: 80%;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #c8e6c9; /* Light border */
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-left: 25px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.name:focus,
+.pass:focus,
+.email:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 5px 5px 5px 5px #c8e6c9; /* Focus border color to match theme */
+}
+
+.btn1 {
+  background-color: #4caf50; /* Bright yellow for buttons */
+  margin-top: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 110px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.para {
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 30%;
+  margin-bottom: 0;
+}
+
+.para2 {
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.btn {
+  background-color: #4caf50;
+  margin-left: 150px;
+  margin-right: 150px;
+  border-style: solid;
+  border-color: transparent; /* Green border for button */
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.para-U {
+  rotate: 0 1 0 180deg;
+}
+
+.btn-U {
+  rotate: 0 1 0 180deg;
+}
